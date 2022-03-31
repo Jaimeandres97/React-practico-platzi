@@ -8,6 +8,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -37,7 +38,18 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
-            }
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: [
+                    {
+                    loader: 'file-loader',
+                    options: {
+                        name: 'images/[hash]-[name].[ext]',
+                        },
+                    },
+                ],
+            },
         ]
     },
     plugins: [
@@ -55,5 +67,6 @@ module.exports = {
             },
         compress: true,
         port: 3005,
+        historyApiFallback: true,
     }
 }
