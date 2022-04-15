@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import AppContext from '../context/AppContext.js';
 import '../styles/ShoppingCart.scss';
-import flechita from '../../curso-frontend-developer-practico/icons/flechita.svg';
+import arrow from '../../curso-frontend-developer-practico/icons/flechita.svg';
 import OrderItem from '../components/OrderItem';
 
 const ShoppingCart = () => {
@@ -16,12 +16,14 @@ const ShoppingCart = () => {
     return ( 
         <aside className="product-detail">
             <div className="title-container">
-                <img src={flechita} alt="arrow" />
+                <img src={arrow} alt="arrow"/>
                 <p className="title">My order</p>
             </div>
             <div className="my-order-content">
                 {state.cart.map(product => (
-                    <OrderItem product={product} key={`orderItem-${product.id}`} 
+                    <OrderItem 
+                        product={product}
+                        key={`orderItem-${product.id}`} 
                     />))}
                 <div className="order">
                 <p>
@@ -30,7 +32,7 @@ const ShoppingCart = () => {
                 <p>${sumTotal()}</p>
                 </div>
                 <button className="primary-button">
-                Checkout
+                    Checkout
                 </button>
             </div>
         </aside>
